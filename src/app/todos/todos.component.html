@@ -1,0 +1,7 @@
+<button class="btn btn-return" (click)="returnLogin()">Return to login page?</button>
+<div *ngFor="let todo of todos">
+    <h2>{{todo.id}}</h2> <button class="btn btn-success" (click)="update(todo.id,todo)">Update</button>
+    <button class="btn btn-primary" (click)="delete(todo.id,todo)">Delete</button>
+
+    <p>{{todo.title}}</p>
+</div>

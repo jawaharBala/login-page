@@ -1,0 +1,37 @@
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input formControlName="username" type="text" class="form-control" id="username"
+        placeholder="Enter your username">
+
+    </div>
+    <div class="alert alert-danger" *ngIf='getUserName.touched && getUserName.invalid'>
+      <div *ngIf='getUserName.errors?.required'>Username is required.</div>
+      <div *ngIf='getUserName.errors?.minlength'>Username must contain atleast 4 characters!
+      </div>
+      <div *ngIf='getUserName.errors?.cannotContainSpace'>Username cannot contain space!</div>
+    </div>
+
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input formControlName="password" type="text" class="form-control" id="password"
+        placeholder="Enter your password">
+      <div class="alert-danger" *ngIf='getPassword.errors?.cannotContainSpace'>Password cannot contain space!</div>
+    </div>
+    <div>
+      <a routerLink="/passwordchange">
+        <button class=" btn-primary">Change password?</button>
+      </a>
+    </div>
+
+    <div class='alert alert-danger'
+      *ngIf='getUserName.errors?.required && getPassword.errors?.required && getUserName.touched && getPassword.touched'>
+      Please enter all fields!</div>
+    <br>
+    <div>
+      <button type="submit" class="btn-success btn-dark">Submit</button>
+    </div>
+  </form>
+</div>
